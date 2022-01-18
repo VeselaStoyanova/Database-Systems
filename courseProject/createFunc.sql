@@ -16,6 +16,8 @@ RETURN
 
 SELECT * FROM TABLE (FN71949.averageAgeOfVisitors('Plovdiv'));
 
+SELECT * FROM TABLE (FN71949.averageAgeOfVisitors('Montana'));
+
 --Функция, която по подадено име на парк връща най-важната информация за атракциите в него
 CREATE FUNCTION FN71949.attractionsBasicInfo(parkName VARCHAR(100))
 RETURNS TABLE(
@@ -31,7 +33,9 @@ RETURN
     WHERE PARK.NAME = ATTR.PARK_NAME
     AND PARK_NAME = parkName;
 
-SELECT * FROM TABLE (FN71949.attractionsBasicInfo('Plovdiv'));
+SELECT * FROM TABLE (FN71949.attractionsBasicInfo('Gabrovo'));
+
+SELECT * FROM TABLE (FN71949.attractionsBasicInfo('Sofia'));
 
 --Фунцкия, която по подадено име на атракция връща информация за посетителите, които са се качили на нея
 CREATE FUNCTION FN71949.attractionVisitorBasicInfo(attractionName VARCHAR(100))
@@ -49,3 +53,5 @@ RETURN
     AND ATTR.NAME = attractionName;
 
 SELECT * FROM TABLE (FN71949.attractionVisitorBasicInfo('Jungle Snake'));
+
+SELECT * FROM TABLE (FN71949.attractionVisitorBasicInfo('Pirates of Caribbean'));
